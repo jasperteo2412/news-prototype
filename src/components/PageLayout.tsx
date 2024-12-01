@@ -1,28 +1,29 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React from "react";
 
 const { Header, Content, Footer } = Layout;
 
 export default function PageLayout() {
-
-  const history = useHistory();
-  const location = useLocation();
+  
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  // const history = useHistory();
+  // const location = useLocation();
 
   const items = new Array(3).fill(null).map((_, index) => ({
     key: String(index + 1),
     label: `nav ${index + 1}`,
   }));
 
-  function handleUrlChange() {
-    //replace url based on article link
-    const params = new URLSearchParams({ name: "value" });
-    history.replace({ pathname: location.pathname, search: params.toString() });
-  }
+  // function handleUrlChange() {
+  //   //replace url based on article link
+  //   const params = new URLSearchParams({ name: "value" });
+  //   history.replace({ pathname: location.pathname, search: params.toString() });
+  // }
 
   return (
     <Layout>
@@ -63,7 +64,9 @@ export default function PageLayout() {
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        ABC News ©{new Date().getFullYear()}.
+        <br/>
+        All Rights Reserved.
       </Footer>
     </Layout>
   );
