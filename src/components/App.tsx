@@ -9,8 +9,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route index element={<ArticlePage />} />
+          <Route path="/" index element={<Home />} />
+          <Route path="/article" index element={<ArticlePage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

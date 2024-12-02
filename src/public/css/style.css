@@ -1,0 +1,24 @@
+/* unvisited link */
+.link-button {
+    color: rgb(98, 98, 242) !important;
+    text-decoration: underline;
+  }
+  
+  /* visited link */
+  .link-button:visited {
+    color: darkblue !important;
+  }
+  
+  /* mouse over link */
+  .link-button:hover {
+    color: blue !important;
+  }
+  
+  /* selected link */
+  .link-button:active {
+    color: darkblue !important;
+  }
+
+  .article-content{
+    font-size: 18px;
+  }

@@ -1,23 +1,26 @@
 import { Outlet } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import React from "react";
-
+import { Breadcrumb, Image, Layout, Menu, MenuProps, theme } from "antd";
+import React, { useState } from "react";
+import logo from "./../public/assets/ABC_logo.png";
+import './../public/css/style.css';
 const { Header, Content, Footer } = Layout;
 
 export default function PageLayout() {
-  
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
   // const history = useHistory();
   // const location = useLocation();
+  const [current, setCurrent] = useState("1");
 
-  const items = new Array(3).fill(null).map((_, index) => ({
-    key: String(index + 1),
-    label: `nav ${index + 1}`,
-  }));
+  // const items = new Array(3).fill(null).map((_, index) => ({
+  //   key: String(index + 1),
+  //   label: `nav ${index + 1}`,
+  // }));
+
+  const items = [
+    { key: 1, label: "Home" },
+    { key: 2, label: "Explore" },
+    { key: 3, label: "Others" },
+  ];
 
   // function handleUrlChange() {
   //   //replace url based on article link
@@ -38,34 +41,20 @@ export default function PageLayout() {
         }}
       >
         <div className="demo-logo" />
+        <img src={logo} style={{ paddingRight: "20px", width: "70px" }} />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          // defaultSelectedKeys={["1"]}
           items={items}
+          // onClick={(item, key)=>{onClick(item, key)}}
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>
-      <Content style={{ padding: "0 48px" }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-        <div
-          style={{
-            padding: 24,
-            minHeight: 380,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <Outlet />
-        </div>
-      </Content>
+      <Outlet />
       <Footer style={{ textAlign: "center" }}>
         ABC News ©{new Date().getFullYear()}.
-        <br/>
+        <br />
         All Rights Reserved.
       </Footer>
     </Layout>
